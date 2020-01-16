@@ -11,21 +11,30 @@ import static org.junit.Assert.*;
 public class AirportSimulatorTest {
 
     // TODO 2. Write a method for testing the PriorityQueue
-    //...
+    @Test
+    public void testPlaneFuelComparator() throws InvalidFuelCapacityException {
+        Plane plane1 = new NormalPlane(10, "Avion 1", true,  2);
+        Plane plane2 = new NormalPlane(10, "Avion 2", true,  5);
+
+        PlaneFuelComparator fuelCompare = new PlaneFuelComparator();
+        System.out.println(fuelCompare.compare(plane1, plane2).getName());
+    }
 
     /* TODO 5. Complete this method for testing the InvalidFuelCapacityException in the
         AirportSimulator::createPlane method
      */
     @Test
-    public void testInvalidFuelCapacityException() {
+    public void testInvalidFuelCapacityException() throws InvalidFuelCapacityException {
         AirportSimulator simulator = new AirportSimulator();
         ThrowingRunnable tr = () -> simulator.simulateTurnWithNewPlanes(3, 3, new int[]{1, 1, -1});
 
-        //assertThrows(...);
+        assertThrows(InvalidFuelCapacityException.class, () -> {
+            simulator.createPlane(-2, true);
+        });
     }
 
     @Test
-    public void testScenario1() {
+    public void testScenario1() throws InvalidFuelCapacityException {
         // Simulate scenario 1
         AirportSimulator simulator = new AirportSimulator();
         simulator.simulateTurnWithNewPlanes(3, 3, new int[]{1, 1, 1});
