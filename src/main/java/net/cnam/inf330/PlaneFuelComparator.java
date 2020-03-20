@@ -2,6 +2,7 @@ package net.cnam.inf330;
 
 import java.util.Comparator;
 
+// FIXME Implement Comparator<Plane>
 public class PlaneFuelComparator implements Comparator {
     @Override
     public int compare(Object o, Object t1) {

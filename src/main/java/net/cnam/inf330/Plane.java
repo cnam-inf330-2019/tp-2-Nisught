@@ -11,6 +11,7 @@ import java.util.Observer;
  */
 // TODO 3.a) Make Plane an abstract class that implements the IPlane interface
 // TODO 6.a) Make Plane an Observable object
+// FIXME Implement interface methods
 public abstract class Plane implements IPlane
        // , Observable
 {
